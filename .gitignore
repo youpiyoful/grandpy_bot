@@ -270,3 +270,4 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/venv,flask,python,pycharm
 
 
+/config.py
