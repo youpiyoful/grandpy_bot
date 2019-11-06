@@ -5,9 +5,9 @@
 # >>> import random, string
 # >>> "".join([random.choice(string.printable) for _ in range(24)])
 
-SECRET_KEY = <'here put the generate secret key'>
+SECRET_KEY = 'here put the generate secret key'
 
-GOOGLE_API_KEY = <'here put the API key'>
+GOOGLE_API_KEY = 'here put the API key'
 
-WIKI_API_KEY = <'here put the API key'>
+WIKI_API_KEY = 'here put the API key'
 
