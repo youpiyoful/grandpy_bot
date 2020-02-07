@@ -13,10 +13,11 @@ def index():
     render = render_template('index.html',
                              api_key=GOOGLE_API_KEY,
                              key_word_place="openclassrooms",
-                             logo=url_for('static', filename='img/logo.png'),
-                             reset_css=url_for('static', filename='css/reset.css'),
-                             grandpy_app_css=url_for('static', filename='css/grandpy_app.css'),
-                             submited=False)
+                             # logo=url_for('static', filename='img/logo.png'),
+                             # reset_css=url_for('static', filename='css/reset.css'),
+                             # grandpy_app_css=url_for('static', filename='css/grandpy_app.css'),
+                             # submited=False
+                             )
     print(render)
     return render
 
