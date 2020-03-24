@@ -2,6 +2,9 @@ from grandpyapp import view
 
 
 class TestView:
+    def __init__(self):
+        pass
+
     def test_index(self, monkeypatch):
         index_html = "<html><body></body></html>"
 
@@ -13,3 +16,4 @@ class TestView:
         render = view.index()
 
         assert render == index_html
+
