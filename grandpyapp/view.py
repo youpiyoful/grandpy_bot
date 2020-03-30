@@ -13,7 +13,8 @@ def index():
     render = render_template('index.html',
                              api_key=GOOGLE_API_KEY,
                              key_word_place="openclassrooms",
-                             logo=url_for('static', filename='img/logo.png'),
+                             logo=url_for('static', filename='img/grandpy_bot2.png'),
+                             # logo2=url_for('static', filename='img/mustache.png'),
                              reset_css=url_for('static', filename='css/reset.css'),
                              grandpy_app_css=url_for('static', filename='css/grandpy_app.css'),
                              submited=False)
@@ -21,10 +22,12 @@ def index():
     return render
 
 
-@app.route('/send_question/<question>', methods=['GET'])
-def get_question(question):
+@app.route('/send_question/<answer>', methods=['GET'])
+def get_answer(answer):
     submited = False
-    if question:
+    if answer:
         submited = True
 
-    return render_template('index.html', submited)
+    return render_template('index.html',
+                           submited,
+                           answer)
