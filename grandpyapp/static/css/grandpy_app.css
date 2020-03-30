@@ -25,6 +25,21 @@ body {
     min-height: 100vh;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+img {
+    justify-content: flex-start;
+}
+
+.green-text {
+    justify-content: center;
+}
+
 .footer-copyright {
     position: absolute;
     bottom: 0;
@@ -32,4 +47,20 @@ body {
     height: 2.5rem;
 }
 
-.row {}
+.logo {
+    height: 25vh;
+}
+
+grandpy_title {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+
+/*Class*/
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
