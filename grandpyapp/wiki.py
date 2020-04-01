@@ -1,0 +1,1 @@
+"""This file maped an object than used wiki api""" 
