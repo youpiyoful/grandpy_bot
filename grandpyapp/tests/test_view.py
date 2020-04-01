@@ -2,10 +2,6 @@
 # import json
 from grandpyapp import view
 
-# class TestView:
-#     """object test of view file"""
-#     def __init__(self):
-#         pass
 
 def test_index(monkeypatch):
     """test than index function return correctly html and mock render_template function"""
@@ -46,8 +42,9 @@ def test_index(monkeypatch):
     render = view.index()
     assert render == index_html
 
+
 # def test_response(monkeypatch):
-#     """test than response wiki return correctly the wiki data when she receive a answer"""
+#     """test than response wiki return correctly the wiki data when she receive an answer"""
 #     answer = "Ou se situe openclassrooms"
 
 #     def mock_find_keyword(request):
