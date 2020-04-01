@@ -6,8 +6,12 @@ from grandpyapp.parser import Parser
 #     def __init__(self):
 #         self.parser = Parser("test", ["test"])
 
-PARSER = Parser("test", ["test"])
+PARSER = Parser("ceci est ma phrase", ["ceci", "est", "ma"])
 
-def test_string_parse():
-    """this method test than string_parse return a string"""
-    assert PARSER.string_parse() == "test"
+# def test_string_parse():
+#     """this method test than string_parse return a string"""
+#     assert PARSER.string_parse() == "ceci est ma phrase"
+
+def test_find_keyword():
+    """test the method who find the keyword in a phrase"""
+    assert PARSER.find_keyword() == ["phrase"]
