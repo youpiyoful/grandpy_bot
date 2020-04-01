@@ -16,18 +16,19 @@ def index():
                              logo=url_for('static', filename='img/grandpy_bot2.png'),
                              # logo2=url_for('static', filename='img/mustache.png'),
                              reset_css=url_for('static', filename='css/reset.css'),
-                             grandpy_app_css=url_for('static', filename='css/grandpy_app.css'),
-                             submited=False)
+                             grandpy_app_css=url_for('static', filename='css/grandpy_app.css'),)
+                            #  submited=False)
     print(render)
     return render
 
 
-@app.route('/send_question/<answer>', methods=['GET'])
-def get_answer(answer):
-    submited = False
-    if answer:
-        submited = True
+@app.route('/send_answer/<answer>', methods=['GET'])
+def get_data(answer):
+    pass
 
-    return render_template('index.html',
-                           submited,
-                           answer)
+    # return render_template('index.html',
+    #                        submited,
+    #                        answer)
+
+
+# mieux vaut avoir un gros appell que plusieurs petit
