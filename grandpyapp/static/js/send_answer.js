@@ -1,9 +1,9 @@
-const sendForm = document.getElementById('send');
+const form = document.getElementById('send');
 
 const sendForm = () => {
     const request = new XMLHttpRequest();
-    request.open('GET', 'send_question')
+    request.open('GET', 'http://127.0.0.1:5000/')
 }
-sendForm.addEventListener("click", (event) => {
+form.addEventListener("click", (event) => {
     
 })
