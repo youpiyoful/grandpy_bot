@@ -7,10 +7,6 @@ class Parser:
         self.answer = answer
         self.stop_words = stop_words
 
-    # @staticmethod
-    # def remove_unutil_word(my_list, word):
-    #     return my_list.remove(word)
-
     def find_keyword(self):
         """this fuction take a string and return a list of keyword"""
         list_of_words = self.answer.split(" ")
