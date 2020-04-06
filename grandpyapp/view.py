@@ -30,7 +30,9 @@ def index():
 
 @app.route('/send_answer/<answer>', methods=['GET'])
 def get_data(answer):
-    stop_words = []
+    """This function take an answer and return a json with api google place and api wiki response"""
+    
+    stop_words = app.config.get('STOP_WORDS')  # use list of stop word stock in config.py
     parser_obj = Parser(answer, stop_words)  # instanciate Parser class
     keyword = parser_obj.find_keyword()  # call method of PARSER object
     place_obj = Place(keyword, GOOGLE_API_KEY, BASE_URL_GOOGLE_PLACE)  # instanciate Place class
