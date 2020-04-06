@@ -14,3 +14,5 @@ WIKI_API_KEY = 'here put the API key'
 BASE_URL_GOOGLE_PLACE = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
 
 BASE_URL_WIKI = ""
+
+STOP_WORDS = ["add a list of stop words"]
