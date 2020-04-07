@@ -26,20 +26,13 @@
                 <h5 class="header col s12 light">Un lieu, une histoire</h5>
             </div>
 
-
-            <!-- <div id="textarea_container" class="row invisible ml-0 pl-0">
-                <div id='test' class="col s12 m5 text-left pl-0">
-                    <p id="historic-content" class="card-panel text-left">
-                    </p>
-                </div>
-            </div> -->
-            <div id="historic-content" class="card-panel m-0 p-0 black invisible chatbox-scroll chat-box-size"></div>
+            <div id="historic-content" class="card-panel m-0 p-0 black invisible chatbox-scroll chatbox-size"></div>
             <div class="row row-textarea">
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1"><i class="material-icons">search</i>De quel lieu voudrais-tu connaître
+                            <textarea id="textarea" class="materialize-textarea"></textarea>
+                            <label for="textarea"><i class="material-icons">search</i>De quel lieu voudrais-tu connaître
                                 l'adresse petit ?</label>
                         </div>
                     </div>
@@ -87,97 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../static/js/iframe_box.js"></script>
     <script src="../static/js/dom_management.js"></script>
-
+    <script src="../static/js/send_answer.js"></script>
 
 </body>
 </html>
-<!--<html>-->
-<!--	<head>-->
-<!--    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
-<!--    	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
-<!--		<style type="text/css">-->
-<!--			body {-->
-<!--				margin: 0px;-->
-<!--				padding: 0px;-->
-<!--				height: 99%;-->
-<!--			}-->
-<!--			textarea#setter  {-->
-<!--				left: -1000px;-->
-<!--				position: absolute;-->
-<!--			}-->
-<!--			.cursor {-->
-<!--				font-size: 12px;-->
-<!--				background-color: black;-->
-<!--				color: black;-->
-<!--				position: relative;-->
-<!--			}-->
-<!--			#terminal {-->
-<!--				margin: 8px;-->
-<!--				cursor: text;-->
-<!--				height: 500px;-->
-<!--				overflow: auto;-->
-<!--			}-->
-<!--			#writer {-->
-<!--				font-family: cursor, courier;-->
-<!--				font-weight: bold;-->
-<!--			}-->
-<!--	        #getter {-->
-<!--	            margin: 5px;-->
-<!--	        }-->
-<!--		</style>-->
-<!--	</head>-->
-<!--	<body>-->
-<!--	<div id="terminal">-->
-<!--		<textarea type="text" id="setter"></textarea>-->
-<!--		<div id="getter">-->
-<!--			<i class="fa fa-terminal" aria-hidden="true"></i>:<span id="writer"></span><b class="cursor" id="cursor">B</b>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--    <script type="text/javascript">-->
-<!--		var cursor = $("#cursor");-->
-<!--		var setter = $("#setter");-->
-<!--		var writer = $("#writer");-->
-<!--		var terminal = $("#terminal");-->
-<!--		$(cursor).css("left", "0px");-->
-<!--		function nl2br(txt){-->
-<!--			return txt.replace(/\n/g, '<br /><i class="fa fa-terminal" aria-hidden="true"></i>:');-->
-<!--		}-->
-<!--		function writeit(from, e){-->
-<!--			e = e || window.event;-->
-<!--			var w = $(writer);-->
-<!--			var tw = from.value;-->
-<!--			w.html(nl2br(tw));-->
-<!--		}-->
-<!--		function moveIt(count, e){-->
-<!--			e = e || window.event;-->
-<!--			var keycode = e.keyCode || e.which;-->
-<!--			if(keycode == 37 && parseInt($(cursor).css("left")) >= (0-((count-1)*10))){-->
-<!--				$(cursor).css("left", parseInt($(cursor).css("left")) - 10 + "px");-->
-<!--			} else if(keycode == 39 && (parseInt($(cursor).css("left")) + 10) <= 0){-->
-<!--				$(cursor).css("left", parseInt($(cursor).css("left")) + 10 + "px");-->
-<!--			}-->
-<!--		}-->
-<!--        function blink(){-->
-<!--            if($(cursor).css("display") == "none"){-->
-<!--                $(cursor).css("display","inline");-->
-<!--            } else {-->
-<!--            	$(cursor).css("display","none");-->
-<!--            }-->
-<!--        }-->
-<!--        setInterval("blink()", 500);-->
-<!--        $(terminal).click(function(){-->
-<!--        	$(setter).focus();-->
-<!--        });-->
-<!--        $(setter).keydown(function(event){-->
-<!--			writeit(this, event);-->
-<!--			moveIt(this.value.length, event);-->
-<!--		});-->
-<!--		$(setter).keyup(function(event){-->
-<!--			writeit(this, event);-->
-<!--		});-->
-<!--		$(setter).keypress(function(event){-->
-<!--			writeit(this, event);-->
-<!--		});-->
-<!--	</script>-->
-<!--	</body>-->
-<!--</html>-->
