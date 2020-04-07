@@ -72,6 +72,15 @@ grandpy_title {
     overflow: auto;
 }
 
-.chatbox-text-wrap {
-    overflow: break-word;
+.chat-box-size {
+    max-height: 40vh;
 }
+
+.chatbox-p {
+    margin: 2px;
+}
+
+.chatbox-text-wrap {
+    overflow-wrap: break-word;
+}
+
