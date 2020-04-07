@@ -34,8 +34,8 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
         const sp = historicElt[1];
         console.log(p);
         console.log(sp);
-        // addClass(p, ['grey']);
-        addClass(sp, ['white-text']);
+        addClass(p, ['p-0', 'm-0', 'chatbox-text-wrap']);
+        addClass(sp, ['green-text']);
         removeClass(historicContent, 'invisible');
         textarea.value = ""
     }
