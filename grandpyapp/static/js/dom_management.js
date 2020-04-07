@@ -1,5 +1,5 @@
 const historicContent = document.getElementById('historic-content');
-const textarea = document.getElementById('textarea1');
+const textarea = document.getElementById('textarea');
 
 const createChatBox = (elt, valueToSave, parent1) => {
     const para = document.createElement(elt); // create the main element p
