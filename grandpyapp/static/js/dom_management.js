@@ -1,18 +1,12 @@
 const historicContent = document.getElementById('historic-content');
 const textarea = document.getElementById('textarea1');
-// const textareaContainer = document.getElementById('textarea_container');
-// const nodeContainer = document.getElementById('test');
 
-const createChatBox = (elt, elt2, br, valueToSave, parent1) => {
-    const para = document.createElement(elt);
-    const span = document.createElement(elt2); //create main element
-    const breakLine = document.createElement(br); // add a breakline
-    const node = document.createTextNode(valueToSave); // write the text
-    span.appendChild(node); // insert the text into main element
-    para.appendChild(span);
-    parent1.appendChild(para); // insert the span element with text in the parent element
-    parent1.appendChild(breakLine); // insert the breakline in the parent element
-    return [para, span] // return the last paragraphe element created
+const createChatBox = (elt, valueToSave, parent1) => {
+    const para = document.createElement(elt); // create the main element p
+    const node = document.createTextNode("~/.> " + valueToSave); // write the text
+    para.appendChild(node); // insert the text in the paragraphe html element
+    parent1.appendChild(para); // insert the para element with text in the parent element
+    return para // return the last paragraphe element created
 };
 
 
@@ -28,14 +22,10 @@ const addClass = (eltToModify, classesToAdd=[]) => {
 
 const historicCreate = textarea.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
-        const historicElt = createChatBox("p", "span", 'br', textarea.value, historicContent);
-        // console.log(historicContent)
-        const p = historicElt[0];
-        const sp = historicElt[1];
+        const historicElt = createChatBox("p", textarea.value, historicContent);
+        const p = historicElt;
         console.log(p);
-        console.log(sp);
-        addClass(p, ['p-0', 'm-0', 'chatbox-text-wrap']);
-        addClass(sp, ['green-text']);
+        addClass(p, ['chatbox-text-wrap', 'chatbox-p', 'green-text']);
         removeClass(historicContent, 'invisible');
         textarea.value = ""
     }
