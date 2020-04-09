@@ -24,9 +24,33 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
         const historicElt = createChatBox("p", textarea.value, historicContent);
         const p = historicElt;
-        console.log(p);
-        addClass(p, ['chatbox-text-wrap', 'chatbox-p', 'green-text']);
+        addClass(p, ['chatbox-text-wrap', 'chatbox-p', 'blue-text']);
         removeClass(historicContent, 'invisible');
-        textarea.value = ""
+        fetch('http://127.0.0.1:5000/send_answer/' + textarea.value, {
+            method: 'GET'
+            // body: json
+        })
+        .then(response => {console.log(response); textarea.value = ""; return response.json()})
+        .then(data => {
+            console.log("data => ", data) // Prints result from `response.json()` in getRequest
+            data_text = " Avant toute chose je tiens à préciser que je suis un peu sénile... Je peux peut être raconter des grosses ******. \
+             Le lieu nommé " + data.candidates[0].name + " se trouve " + data.candidates[0].formatted_address
+            console.log(data_text)
+            const historicElt2 = createChatBox("p", data_text, historicContent);
+            const p = historicElt2;
+            addClass(p, ['chatbox-text-wrap', 'chatbox-p', 'green-text']);
+        })
+        .catch(error => console.error("error => ", error))
     }
 });
+
+// textarea.addEventListener("keyup", (event) => {
+//     if (event.keyCode == 13) {
+//         fetch('http://127.0.0.1:5000/send_answer/' + textareaToSubmitValue)
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log(data) // Prints result from `response.json()` in getRequest
+//         })
+//         .catch(error => console.error(error))
+//     }
+// })
