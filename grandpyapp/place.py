@@ -1,8 +1,9 @@
 """This file maped an object than used google place api""" 
 import requests
+import json
 
 
-class Place:
+class QueryPlace: # query place
     """this class used google api for find a place"""
     def __init__(self, keywords, api_key, base_url):
         self.keywords = keywords
@@ -20,13 +21,16 @@ class Place:
     def find_place(self):
         """this method call google place api for find place with a keyword"""
         r = requests.get(self.build_url_for_api_place())
-        # r = requests.get(f'{self.base_url}?input={" ".join(self.keywords)}&inputtype=textquery&fields=formatted_address,name&key={self.api_key}')
-        data = r.json
-        # data_status = r.status_code
-        print(data)
-        # return data_status
-        return data
-        # return {'ok_google': f'la question était : {self.keywords}'}
+        # print(r.json())
+        # if r.json()['status'] == "ZERO_RESULTS":
+            
+        #     for keyword in self.keywords:
+        #         r = requests.get(f'{self.base_url}?input={keyword}&inputtype=textquery&fields=formatted_address,name&key={self.api_key}')
+                
+        #         if r.json()['status'] != "ZERO_RESULTS":
+        #             break
+        return r
 
-# place = Place(["ou", "se", "situe", "openclassrooms"], "apikey", "http:/testofgoogle/json")
+# PLACE = Place(["openclassrooms"], 'AIzaSyDhEhf5rfvxofPXL85o1Z8M6XrKEhAGBgc', 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json')
 # place.build_url_for_api_place()
+# PLACE.find_place()
