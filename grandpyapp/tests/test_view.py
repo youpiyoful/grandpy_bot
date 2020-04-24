@@ -1,6 +1,7 @@
 """this file test all function's view"""
-from grandpyapp import view
-
+from grandpyapp import view, parser, place, wiki
+import pytest
+import json
 
 def test_index(monkeypatch):
     """test than index function return correctly html and mock render_template function"""
@@ -46,55 +47,49 @@ def test_index(monkeypatch):
     assert index_html == render
 
 
-# def test_response(monkeypatch):
-#     """test than response wiki return correctly the wiki data when she receive an answer"""
-#     answer = "Ou se situe openclassrooms"
+class MockResponse:
 
-#     def mock_find_keyword(request):
-#         keyword_from_answer = "openclassrooms"
-#         return keyword_from_answer
+    @staticmethod
+    def google_json():
+        return {'candidates': [{'formatted_address': '7 Cité Paradis, 75010 Paris, France'}]}
+    
+    @staticmethod
+    def wiki_json():
+        return {"je ne connais pas la reponse": "mais je sais qu'elle est en json"}
 
-#     def mock_google_place(request):
-#         google_resp = {
-#             "candidates": [
-#                 {
-#                     "formatted_address": "7 Cité Paradis, 75010 Paris, France",
-#                     "geometry": {
-#                         "lat": 48.8748465,
-#                         "long": 2.3504873
-#                     }
-#                 }
-#             ]
-#         }
-#         return google_resp
 
-#     def mock_wiki(request):
-#         wiki_resp = {
-#             "je ne connais pas la reponse": "mais je sais qu'elle est en json"
-#         }
-#         return wiki_resp
+def test_get_data(monkeypatch):
+    """test than response wiki return correctly the wiki data when she receive an answer"""
+    answer = "Ou se situe openclassrooms"
 
-#     monkeypatch.setattr(view, 'find_keyword', mock_find_keyword)
-#     monkeypatch.setattr(view, 'find_place', mock_google_place)
-#     monkeypatch.setattr(view, 'wiki_annotation', mock_wiki)
+    def mock_find_keyword(*args, **kwargs):
+        keyword_from_answer = "openclassrooms"
+        return keyword_from_answer
 
-#     response_result = {
-#         "resp_google":
-#         {
-#             "candidates": [
-#                 {
-#                     "formatted_address": "7 Cité Paradis, 75010 Paris, France",
-#                     "geometry": {
-#                         "lat": 48.8748465,
-#                         "long": 2.3504873
-#                     }
-#                 }
-#             ]
-#         },
-#         "resp_wiki":
-#         {
-#             "je ne connais pas la reponse": "mais je sais qu'elle est en json"
-#         }
-#     }
+    def mock_google_place(*args, **kwargs):
+        return MockResponse().google_json()
 
-#     assert response_result == view.get_data(answer)
+    def mock_wiki(*args, **kwargs):
+        return MockResponse().wiki_json()
+
+    monkeypatch.setattr(parser.Parser, 'find_keyword', mock_find_keyword)
+    monkeypatch.setattr(place.QueryPlace, 'find_place', mock_google_place)
+    monkeypatch.setattr(wiki.Wiki, 'find_data_about_place', mock_wiki)
+
+    # response_result = {
+    #     "resp_google":
+    #     {
+    #         "candidates": [
+    #             {
+    #                 "formatted_address": "7 Cité Paradis, 75010 Paris, France",
+    #             }
+    #         ]
+    #     },
+    #     "resp_wiki":
+    #     {
+    #         "je ne connais pas la reponse": "mais je sais qu'elle est en json"
+    #     }
+    # }
+
+    print('test = ', view.get_data(answer))
+    assert view.get_data(answer) == {'candidates': [{'formatted_address': '7 Cité Paradis, 75010 Paris, France'}]}
