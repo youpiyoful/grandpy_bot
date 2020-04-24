@@ -40,12 +40,14 @@ def get_data(answer):
     keyword = parser_obj.find_keyword()  # call method of PARSER object
     place_obj = QueryPlace(keyword, GOOGLE_API_KEY, BASE_URL_GOOGLE_PLACE)  # instanciate Place class
     data_google = place_obj.find_place()  # call method of PLACE object
-    # wiki_obj = Wiki()  # instanciate wiki class
-    # data_wiki = wiki_obj.find_data_about_place()  # call method of WIKI object
-    # data = {'data_google': data_google, 'data_wiki': data_wiki}  # concatenate data_google and data_wiki in a big json object
-    print(data_google)
+    wiki_obj = Wiki('fr', keyword)  # instanciate wiki class
+    data_wiki = wiki_obj.find_data_about_place()  # call method of WIKI object
+    # print(json.dumps(data_wiki.json()))
+    data = {"data_google": data_google.json(), "data_wiki": data_wiki} # concatenate data_google and data_wiki in a big json object
+    print(data)
+    print(type(json.dumps(data)))
     response = app.response_class(
-        response=json.dumps(data_google.json()),
+        response=json.dumps(data, ensure_ascii=False),
         status=200,
         mimetype='application/json'
     )
