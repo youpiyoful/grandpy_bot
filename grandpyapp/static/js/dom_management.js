@@ -33,8 +33,14 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
         .then(response => {console.log(response); textarea.value = ""; return response.json()})
         .then(data => {
             console.log("data => ", data) // Prints result from `response.json()` in getRequest
-            data_text = " Avant toute chose je tiens à préciser que je suis un peu sénile... Je peux peut être raconter des grosses ******. \
-             Le lieu nommé " + data.candidates[0].name + " se trouve " + data.candidates[0].formatted_address
+             
+            if (data.candidates[0]) {
+                data_text = "Avant toute chose je tiens à préciser que je suis un peu sénile... Je peux peut être raconter des grosses ******. \
+                Le lieu nommé " + data.candidates[0].name + " se trouve " + data.candidates[0].formatted_address
+            } else {
+                data_text = "La sénilité me guette ! J'ai rien trouvé p'tit"
+            }
+
             console.log(data_text)
             const historicElt2 = createChatBox("p", data_text, historicContent);
             const p = historicElt2;
