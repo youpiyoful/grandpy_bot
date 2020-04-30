@@ -16,5 +16,5 @@ def test_find_data_about_place(monkeypatch):
     monkeypatch.setattr(wikipedia, 'summary', mock_wikipedia_summary)
 
     resp = wiki.find_data_about_place()
-    assert resp == {"openclassrooms": "Openclassrooms est un site web d'apprentissage."}
-    assert resp.get('openclassrooms') == "Openclassrooms est un site web d'apprentissage."
+    assert resp == {"wiki_response": "Openclassrooms est un site web d'apprentissage."}
+    assert resp.get('wiki_response') == "Openclassrooms est un site web d'apprentissage."
