@@ -1,6 +1,6 @@
-const historicContent = document.getElementById('historic-content');
-const textareaToSubmit = document.getElementById('textarea');
-const textareaToSubmitValue = textareaToSubmit.value;
+// const historicContent = document.getElementById('historic-content');
+// const textareaToSubmit = document.getElementById('textarea');
+// const textareaToSubmitValue = textareaToSubmit.value;
 
 // fetch('')
 // const getResponseToAnswer = () => {
