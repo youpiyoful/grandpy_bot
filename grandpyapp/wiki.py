@@ -13,7 +13,7 @@ class Wiki:
     def find_data_about_place(self):
         """this method call wiki api for find data about place and return a dict response"""
         wikipedia.set_lang(self.language)
-        resp = {' '.join(self.keywords): wikipedia.summary(self.keywords, sentences=1)}
+        resp = {'wiki_response': wikipedia.summary(self.keywords, sentences=1)}
             
         print(resp)
         print(type(resp))
