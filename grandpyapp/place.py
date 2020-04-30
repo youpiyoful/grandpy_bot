@@ -21,14 +21,6 @@ class QueryPlace: # query place
     def find_place(self):
         """this method call google place api for find place with a keyword"""
         r = requests.get(self.build_url_for_api_place())
-        # print(r.json())
-        # if r.json()['status'] == "ZERO_RESULTS":
-            
-        #     for keyword in self.keywords:
-        #         r = requests.get(f'{self.base_url}?input={keyword}&inputtype=textquery&fields=formatted_address,name&key={self.api_key}')
-                
-        #         if r.json()['status'] != "ZERO_RESULTS":
-        #             break
         return r
 
 # PLACE = Place(["openclassrooms"], 'AIzaSyDhEhf5rfvxofPXL85o1Z8M6XrKEhAGBgc', 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json')
