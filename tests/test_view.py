@@ -3,8 +3,8 @@ from grandpyapp import view, parser, place, wiki
 import pytest
 import json
 
-def test_index(monkeypatch):
-    """test than index function return correctly html and mock render_template function"""
+def test_index_render_template_correctly(monkeypatch):
+    """test index function return correctly html"""
     index_html = """
                 <html>
                     <body>
@@ -17,7 +17,7 @@ def test_index(monkeypatch):
                 </html>
                 """
 
-    def mock_template_render(request, *args, **kwargs):
+    def mock_template_render(*args, **kwargs):
         variable_to_html_elt = ""
         for key in kwargs:
             # print(kwargs[key])
@@ -37,7 +37,7 @@ def test_index(monkeypatch):
                 </html>
                 """
 
-    def mock_url_for(request, *args, **kwargs):
+    def mock_url_for(*args, **kwargs):
         return "path/to/css"
 
     monkeypatch.setattr(view, "render_template", mock_template_render)

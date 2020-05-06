@@ -1,5 +1,6 @@
 """File who test method of parser class"""
 from grandpyapp.parser import Parser
+import pytest
 
 PARSER = Parser("ceci est ma phrase", ["ceci", "est", "ma"])
 
