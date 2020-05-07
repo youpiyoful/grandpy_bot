@@ -21,7 +21,10 @@ class Parser:
             # use list comprehension
             [list_of_words.remove(word) for word in list_of_words if word == stop_word]
 
-        return list_of_words
+        if list_of_words:
+            return list_of_words
+        
+        return ["any keyword find"]
 
 # parser = Parser("ceci est ma phrase", ["ceci", "est", "ma"])
 # print(parser.find_keyword())
