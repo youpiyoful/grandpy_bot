@@ -14,7 +14,7 @@ class Parser:
 
     def find_keyword(self):
         """this fuction take a string and return a list of keyword"""
-        list_of_words = self.answer.split(" ")
+        list_of_words = self.answer.lower().split(" ")
 
         for stop_word in self.stop_words:
 
