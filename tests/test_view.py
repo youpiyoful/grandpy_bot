@@ -132,7 +132,7 @@ def test_get_data_if_any_keyword(mock_response_find_place_is_ok,
 
     response = view.get_data(answer)
 
-    assert response.response == {"response": "aucun mot clef valide"}
+    assert response.response == {"error": "mot clef invalide"}
     assert response.status_code == 404
 
 
