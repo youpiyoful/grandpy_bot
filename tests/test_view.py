@@ -119,20 +119,14 @@ def test_get_data_if_any_keyword(mock_response_find_place_is_ok,
                                  mock_response_find_data_about_place_is_ok,
                                  monkeypatch):
     """test the behavior of get_data() if parser.find_keyword return any keyword"""
-    answer = ""
-    # class MockResponse():
-    #     def __init__(self):
-    #         self.status_code = 404
-    #         self.response = json.dumps({"response": "aucun mot clef valide"})
-    #         self.mimetype = {}
     def mock_find_any_keyword(*args, **kwargs):
         return ["any keyword find"]
     
     monkeypatch.setattr(parser.Parser, 'find_keyword', mock_find_any_keyword)
 
-    response = view.get_data(answer)
+    response = view.get_data("")
 
-    assert response.response == {"error": "mot clef invalide"}
+    assert response.json == {"error": "aucun mot clef valide"}
     assert response.status_code == 404
 
 
@@ -140,8 +134,18 @@ def test_get_data_if_google_place_is_wrong():
     """test the behavior of get_data() if google_place encounter a problem"""
     pass
 
-def test_get_data_if_wikipedia_is_wrong():
+def test_get_data_if_wikipedia_is_wrong(mock_response_find_place_is_ok,
+                                        mock_response_find_keyword_is_ok,
+                                        monkeypatch):
     """test the behavior of get_data() if find_data_about_place() encounter a problem"""
-    pass
+
+    def mock_find_any_data_about_place(*args, **kwargs):
+        return {'error': 'data not found'}
+    
+    monkeypatch.setattr(wiki.Wiki, 'find_data_about_place', mock_find_any_data_about_place)
+
+    resp = view.get_data('tour eifel')
+    assert resp.status_code == 404
+    assert resp.json == {'error': 'aucune donnée trouvée'}
 
 #endregion
