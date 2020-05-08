@@ -13,11 +13,18 @@ class Wiki:
     def find_data_about_place(self):
         """this method call wiki api for find data about place and return a dict response"""
         wikipedia.set_lang(self.language)
-        resp = {'wiki_response': wikipedia.summary(self.keywords, sentences=1)}
-            
-        print(resp)
-        print(type(resp))
+        # verifier keywords
+        str_keywords = ' '.join(self.keywords)
+        try:
+            resp = {'wiki_response': wikipedia.summary(str_keywords, sentences=1)}
+            print(resp)
+        
+        except wikipedia.exceptions.PageError as e:
+            resp = {'error': f'{e}'}
+            print(resp)
+        
         return resp
 
-# wiki = Wiki('fr', 'tour eifel')
+
+# wiki = Wiki('fr', ['tour', 'eifel'])
 # wiki.find_data_about_place()
