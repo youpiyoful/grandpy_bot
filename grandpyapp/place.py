@@ -12,8 +12,13 @@ class QueryPlace: # query place
 
     def build_url_for_api_place(self):
         """This method build a correct url for call google place api with Place attribute"""
-        str_keywords = ' '.join(self.keywords)
-        print(str_keywords)
+        if type(self.keywords) is list:
+            str_keywords = ' '.join(self.keywords)
+            print(str_keywords)
+        
+        else:
+            str_keywords = self.keywords
+
         url = f'{self.base_url}?input={str_keywords}&inputtype=textquery&fields=formatted_address,name&key={self.api_key}'
         print(url)
         return url
