@@ -32,7 +32,7 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
         const p = historicElt;
         addClass(p, ['chatbox-text-wrap', 'chatbox-p', 'blue-text']);
         removeClass(historicContent, 'invisible');
-        fetch('http://127.0.0.1:5000/send_answer/' + valueOfAnswer, {
+        fetch('http://127.0.0.1:5000/send_answer?answer=' + valueOfAnswer, {
             method: 'GET'
             // body: json
         })
@@ -41,7 +41,7 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
             console.log("data => ", data) // Prints result from `response.json()` in getRequest
              
             if (data.data_google.candidates[0]) {
-                data_text = "Avant toute chose je tiens à préciser que je suis un peu sénile... Je peux peut être raconter des grosses ******. \
+                data_text = "Avant toute chose je tiens à préciser que je suis un peu sénile... \
                 Le lieu nommé " + data.data_google.candidates[0].name + " se trouve " + data.data_google.candidates[0].formatted_address + "."
                 if (data.data_wiki.wiki_response) {
                     data_text_wiki = " Tient j'oubliais, est ce que tu savais que " + data.data_wiki.wiki_response

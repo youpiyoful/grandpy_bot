@@ -33,11 +33,15 @@ def index():
     return render
 
 
-@app.route('/send_answer/<answer>', methods=['GET'])
-def get_data(answer):
+@app.route('/send_answer', methods=['POST', 'GET'])
+def get_data():
     """This function take an answer and return a json with api google place and api wiki response"""
+    # import request
+    answer = request.args.get('answer')
+    print("answer from get_data() : ", answer)
     status_code = 200 # if no error is raised the status code remains equal to 200
     stop_words = app.config.get('STOP_WORDS')  # use list of stop word stock in config.py
+    print('ANSWER from view.get_data() : ', answer)
     parser_obj = Parser(answer, stop_words)  # instanciate Parser class
     keywords = parser_obj.find_keyword()  # call method of PARSER object
     print("KEYWORD : ", keywords)
@@ -58,10 +62,6 @@ def get_data(answer):
             data = {"data_google": data_google.json(), "data_wiki": data_wiki} # concatenate data_google and data_wiki in a big json object
             print(data)
 
-    
-    # else:
-
-    # print(type(json.dumps(data)))
     response = app.response_class(
         response=json.dumps(data, ensure_ascii=False),
         status=status_code,
@@ -72,3 +72,6 @@ def get_data(answer):
 
 
 # mieux vaut avoir un gros appell que plusieurs petit
+
+# TODO gérer les envoies vides directement depuis js !
+# TODO : ne pas oublier de trouver la solution pour gérer les cookies
