@@ -13,8 +13,13 @@ class Wiki:
     def find_data_about_place(self):
         """this method call wiki api for find data about place and return a dict response"""
         wikipedia.set_lang(self.language)
-        # verifier keywords
-        str_keywords = ' '.join(self.keywords)
+        
+        if type(self.keywords) is list:
+            str_keywords = ' '.join(self.keywords)
+        
+        else:
+            str_keywords = self.keywords
+        
         try:
             resp = {'wiki_response': wikipedia.summary(str_keywords, sentences=1)}
             print(resp)
