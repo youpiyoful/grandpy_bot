@@ -50,18 +50,18 @@ img {
 .logo {
     height: 25vh;
 }
-
+/* 
 grandpy_title {
     padding-top: 0px !important;
     margin-top: 0px !important;
-}
+} */
 
 /* padding and margin */
 
 /*Class*/
-.visible {
+/* .visible {
   visibility: visible;
-}
+} */
 .invisible {
   visibility: hidden;
 }
