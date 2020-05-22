@@ -23,7 +23,7 @@ def index():
     render = make_response(render_template('index.html',
                              api_key=GOOGLE_API_KEY,
                              key_word_place="openclassrooms",
-                             logo=url_for('static', filename='img/grandpy_bot2.png'),
+                             logo=url_for('static', filename='img/dither_it_logo.jpg'), # logo is dither and take 80% space in less (low tech mag)
                              reset_css=url_for('static', filename='css/reset.css'),
                              grandpy_app_css=url_for('static', filename='css/grandpy_app.css')), 200)
     # render.set_cookie('same-site-cookie', 'foo', samesite='Lax')
@@ -56,7 +56,7 @@ def get_data():
         wiki_obj = Wiki('fr', keywords)  # instanciate wiki class
         data_wiki = wiki_obj.find_data_about_place()  # call method of WIKI object
         if [i for i in data_wiki][0] == 'error':
-            data = {'error': 'aucune donnée trouvée'}
+            data = None
             status_code = 404
         else:
             data = {"data_google": data_google.json(), "data_wiki": data_wiki} # concatenate data_google and data_wiki in a big json object
