@@ -3,14 +3,15 @@ from flask_cors import CORS
 from grandpyapp.place import QueryPlace
 from grandpyapp.wiki import Wiki
 from grandpyapp.parser import Parser
-
+import os
 
 app = Flask(__name__)
 CORS(app)
 # cors = CORS(app, resources={r"/grandpybot/*": {"origins": "*"}})
 # Config options - Make sure you created a 'config.py' file.
 app.config.from_object('config')
-GOOGLE_API_KEY = app.config.get('GOOGLE_API_KEY')
+# GOOGLE_API_KEY = app.config.get('GOOGLE_API_KEY')
+GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 WIKI_API_KEY = app.config.get('WIKI_API_KEY')
 BASE_URL_GOOGLE_PLACE = app.config.get('BASE_URL_GOOGLE_PLACE')
 BASE_URL_WIKI = app.config.get('BASE_URL_WIKI')
