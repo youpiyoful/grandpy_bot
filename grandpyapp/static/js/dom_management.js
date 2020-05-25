@@ -1,5 +1,7 @@
 const historicContent = document.getElementById('historic-content');
 const textarea = document.getElementById('textarea');
+const loader = document.querySelector('loader');
+const baseUrl = "https://grandpy-bot-2001.herokuapp.com/"; // in dev use http://127.0.0.1:5000
 
 const createChatBox = (elt, valueToSave1, parent1) => {
     const para = document.createElement(elt); // create the main element p
@@ -9,6 +11,20 @@ const createChatBox = (elt, valueToSave1, parent1) => {
     return para // return the last paragraphe element created
 };
 
+loader.innerHTML = 
+'<div class="preloader-wrapper small active">\
+    <div class="spinner-layer spinner-green-only">\
+        <div class="circle-clipper left">\
+            <div class="circle"></div>\
+        </div>\
+        <div class="gap-patch">\
+            <div class="circle"></div>\
+        </div>\
+        <div class="circle-clipper right">\
+            <div class="circle"></div>\
+        </div>\
+    </div>\
+</div>'
 
 // this function take an html object and class to remove in parameter 
 const removeClass = (eltToModify, classToRemove) => {
@@ -36,7 +52,7 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
         console.log("if value", /[A-z]/.test(valueOfAnswer));
         if (/[A-z]/.test(valueOfAnswer)){
             console.log("value of answer is not null");
-            fetch('http://127.0.0.1:5000/send_answer?answer=' + valueOfAnswer, {
+            fetch(baseUrl + '/send_answer?answer=' + valueOfAnswer, {
                 method: 'GET'
                 // body: json
             })
@@ -82,7 +98,9 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
     }
 });
 
-// TODO: gérer les cas ou wiki ou google ne retourne rien
+// TODO: gérer les cas ou wiki et google ne retourne pas la même chose
+// TODO mettre en place la sécurité avec google
+
 
 // textarea.addEventListener("keyup", (event) => {
 //     if (event.keyCode == 13) {
