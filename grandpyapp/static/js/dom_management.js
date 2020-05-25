@@ -11,20 +11,20 @@ const createChatBox = (elt, valueToSave1, parent1) => {
     return para // return the last paragraphe element created
 };
 
-loader.innerHTML = 
-'<div class="preloader-wrapper small active">\
-    <div class="spinner-layer spinner-green-only">\
-        <div class="circle-clipper left">\
-            <div class="circle"></div>\
-        </div>\
-        <div class="gap-patch">\
-            <div class="circle"></div>\
-        </div>\
-        <div class="circle-clipper right">\
-            <div class="circle"></div>\
-        </div>\
-    </div>\
-</div>'
+// loader.innerHTML = 
+// '<div class="preloader-wrapper small active">\
+//     <div class="spinner-layer spinner-green-only">\
+//         <div class="circle-clipper left">\
+//             <div class="circle"></div>\
+//         </div>\
+//         <div class="gap-patch">\
+//             <div class="circle"></div>\
+//         </div>\
+//         <div class="circle-clipper right">\
+//             <div class="circle"></div>\
+//         </div>\
+//     </div>\
+// </div>'
 
 // this function take an html object and class to remove in parameter 
 const removeClass = (eltToModify, classToRemove) => {
