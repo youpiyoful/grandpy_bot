@@ -270,5 +270,5 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/venv,flask,python,pycharm
 
 
-/config.py
 /grandpyapp/static/img
+/local_serv.sh
