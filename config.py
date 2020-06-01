@@ -43,6 +43,12 @@ class ProductionConfig(Config):
     SECRET_KEY = 'here put the generate secret key'
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
+class DevelopmentConfig(Config):
+    DEBUG = True
+    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+
+class TestingConfig(Config):
+    TESTING = True
 
 # WIKI_API_KEY = 'here put the API key'
 
