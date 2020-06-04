@@ -1,35 +1,17 @@
-/*this part concern the responsive iframe*/
-
-/*.iframe-container {*/
-/*  overflow: hidden;*/
-/*  padding-top: 56.25%;*/
-/*  position: relative;*/
-/*}*/
-
-/*.iframe-container iframe {*/
-/*   border: 0;*/
-/*   height: 100%;*/
-/*   left: 0;*/
-/*   position: absolute;*/
-/*   top: 0;*/
-/*   width: 100%;*/
-/*}*/
-
-/*!* 4x3 Aspect Ratio *!*/
-/*.iframe-container-4x3 {*/
-/*  padding-top: 75%;*/
-/*}*/
-
 body {
-    position: relative;
+    /* position: relative; */
     min-height: 100vh;
+    /* background-color: #fff5d1; */
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.subtitle {
+    font-size: 1.3em;
+    margin-top: 0;
+}
+
+h1 {
+    margin: 0.2em;
+    font-size: 2.8em;
 }
 
 img {
@@ -48,20 +30,20 @@ img {
 }
 
 .logo {
-    height: 25vh;
+    height: 15vh;
+    padding: 0;
+    /* border-radius: 100%; */
 }
-/* 
-grandpy_title {
-    padding-top: 0px !important;
-    margin-top: 0px !important;
-} */
 
-/* padding and margin */
+.loader {
+    margin-top: 1em;
+}
 
-/*Class*/
-/* .visible {
-  visibility: visible;
-} */
+#map {
+    height: 20vh;
+    width: 100%;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -73,7 +55,7 @@ grandpy_title {
 }
 
 .chatbox-size {
-    max-height: 40vh;
+    max-height: 30vh;
 }
 
 .chatbox-p {
