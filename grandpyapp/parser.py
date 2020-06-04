@@ -7,11 +7,6 @@ class Parser:
         self.answer = answer
         self.stop_words = stop_words
 
-    @staticmethod
-    def another_public_method():
-        """an other public method"""
-        return "an other public method"
-
     def find_keyword(self):
         """this fuction take a string and return a list of keyword"""
         if self.answer:
