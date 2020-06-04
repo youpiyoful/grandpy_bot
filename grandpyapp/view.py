@@ -1,3 +1,4 @@
+"""This page contains all the endpoints of our application"""
 from flask import Flask, render_template, url_for, json, make_response, request, jsonify
 from flask_cors import CORS
 from grandpyapp.place import QueryPlace
@@ -8,11 +9,9 @@ app = Flask(__name__)
 CORS(app)
 # cors = CORS(app, resources={r"/grandpybot/*": {"origins": "*"}})
 # Config options - Make sure you created a 'config.py' file.
-# app.config.from_object('config.DevelopmentConfig')
-app.config.from_object('config.ProductionConfig')
+app.config.from_object('config.DevelopmentConfig')
+# app.config.from_object('config.ProductionConfig')
 GOOGLE_API_KEY = app.config.get('GOOGLE_API_KEY')
-# GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
-# WIKI_API_KEY = app.config.get('WIKI_API_KEY')
 BASE_URL_GOOGLE_PLACE = app.config.get('BASE_URL_GOOGLE_PLACE')
 # BASE_URL_WIKI = app.config.get('BASE_URL_WIKI')
 
@@ -20,6 +19,7 @@ BASE_URL_GOOGLE_PLACE = app.config.get('BASE_URL_GOOGLE_PLACE')
 @app.route('/', methods=['GET'])
 @app.route('/grandpy_bot/', methods=['GET'])
 def index():
+    """This function returns the single page of the app"""
     # username = request.cookies.get('username')
     render = make_response(render_template('index.html',
                              api_key=GOOGLE_API_KEY,
@@ -37,7 +37,7 @@ def index():
 @app.route('/send_answer', methods=['POST', 'GET'])
 def get_data():
     """This function take an answer and return a json with api google place and api wiki response"""
-    # import request
+    print("APIKEY : ", GOOGLE_API_KEY)
     answer = request.args.get('answer')
     print("answer from get_data() : ", answer)
     status_code = 200 # if no error is raised the status code remains equal to 200
@@ -56,9 +56,11 @@ def get_data():
         data_google = place_obj.find_place()  # call method of PLACE object
         wiki_obj = Wiki('fr', keywords)  # instanciate wiki class
         data_wiki = wiki_obj.find_data_about_place()  # call method of WIKI object
+
         if [i for i in data_wiki][0] == 'error':
             data = None
             status_code = 404
+
         else:
             data = {"data_google": data_google.json(), "data_wiki": data_wiki} # concatenate data_google and data_wiki in a big json object
             print(data)
@@ -71,8 +73,3 @@ def get_data():
     # response.set_cookie('username', 'the username', samesite='Strict', secure=True)
     return response
 
-
-# mieux vaut avoir un gros appell que plusieurs petit
-
-# TODO gérer les envoies vides directement depuis js !
-# TODO : ne pas oublier de trouver la solution pour gérer les cookies
