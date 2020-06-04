@@ -19,7 +19,7 @@ class QueryPlace: # query place
         else:
             str_keywords = self.keywords
 
-        url = f'{self.base_url}?input={str_keywords}&inputtype=textquery&fields=formatted_address,name&key={self.api_key}'
+        url = f'{self.base_url}?input={str_keywords}&inputtype=textquery&fields=formatted_address,name,geometry&key={self.api_key}'
         print(url)
         return url
 
