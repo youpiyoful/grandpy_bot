@@ -40,7 +40,7 @@ class Config(object):
               "x", "y", "z", "zut", "à", "â", "ça", "ès", "étaient", "étais", "était", "étant", "été", "être", "bonsoir", "j'espère", "semaine", "est-ce", "l'adresse", "d'avance", 'salutations', '', 'mamie']
 
 class ProductionConfig(Config):
-    SECRET_KEY = 'here put the generate secret key'
+    SECRET_KEY = 'os.environ.get("GOOGLE_API_KEY")'
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
 class DevelopmentConfig(Config):
