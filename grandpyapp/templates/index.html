@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>Starter Template - Materialize</title>
 
     <!-- CSS  -->
@@ -12,23 +13,27 @@
     <link rel="stylesheet" href="{{reset_css}}">
     <link rel="stylesheet" href="{{grandpy_app_css}}">
 </head>
-<body>
 
+<body>
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
             <header>
-                <!--        <div class="">-->
-                <img class="logo" src="{{ logo }}"/>
-                <!--        </div>-->
-                <h1 class="green-text">GrandPy Bot</h1>
+                <div class="row center">
+
+                        <h1 class="green-text">GrandPy Bot</h1>
+                        <h5 class="subtitle light">Un lieu, une histoire</h5>
+                </div>
+                <div class="row center">
+
+                    <img class="logo p-0" src="{{ logo }}" />
+                </div>
             </header>
 
-            <div class="row center">
-                <h5 class="header col s12 light">Un lieu, une histoire</h5>
-            </div>
-
             <div id="historic-content" class="card-panel m-0 p-0 black invisible chatbox-scroll chatbox-size"></div>
-            <div class="row row-textarea">
+            
+            <div class="row center loader"></div>
+
+            <div class="row-textarea">
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
@@ -39,38 +44,20 @@
                     </div>
                 </form>
             </div>
+
+            <div id="map"></div>
         </div>
     </div>
 
-    <div class="row">
-    
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Afficher la carte</a>
-        <div id="modal1" class="modal">
+    <!-- <div class="row"> -->
+        
+    <!-- </div> -->
 
-            <div class="modal-content">
-                <div class="iframe-container">
-                    <iframe width="100%" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps/embed/v1/place?q={{ key_word_place }}&key={{ api_key }}"
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-
-        </div>
-    </div>
-    <!--<div class="section">-->
-    <!--    <div class="container">-->
-
-    <!--    </div>-->
-    <!--</div>-->
 
     <footer class="footer-copyright">
         <div class="container black-text center">
             Made by <a class="orange-text text-lighten-2" href="https://github.com/youpiyoful/grandpy_bot">Yoan
-            Fornari</a>
+                Fornari</a>
         </div>
     </footer>
 
@@ -82,6 +69,8 @@
     <script src="../static/js/iframe_box.js"></script>
     <script src="../static/js/dom_management.js"></script>
     <script src="../static/js/send_answer.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap"></script>
 
 </body>
+
 </html>
