@@ -9,8 +9,8 @@ app = Flask(__name__)
 CORS(app)
 # cors = CORS(app, resources={r"/grandpybot/*": {"origins": "*"}})
 # Config options - Make sure you created a 'config.py' file.
-app.config.from_object('config.DevelopmentConfig')
-# app.config.from_object('config.ProductionConfig')
+# app.config.from_object('config.DevelopmentConfig')
+app.config.from_object('config.ProductionConfig')
 GOOGLE_API_KEY = app.config.get('GOOGLE_API_KEY')
 BASE_URL_GOOGLE_PLACE = app.config.get('BASE_URL_GOOGLE_PLACE')
 # BASE_URL_WIKI = app.config.get('BASE_URL_WIKI')
@@ -23,7 +23,7 @@ def index():
     # username = request.cookies.get('username')
     render = make_response(render_template('index.html',
                              api_key=GOOGLE_API_KEY,
-                             key_word_place="openclassrooms",
+                            #  key_word_place="openclassrooms",
                              logo=url_for('static', filename='img/dither_it_logo.jpg'), # logo is dither and take 80% space in less (low tech mag)
                              reset_css=url_for('static', filename='css/reset.css'),
                              grandpy_app_css=url_for('static', filename='css/grandpy_app.css')), 200)
