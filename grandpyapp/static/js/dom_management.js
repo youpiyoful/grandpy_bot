@@ -1,8 +1,8 @@
 const historicContent = document.getElementById('historic-content');
 const textarea = document.getElementById('textarea');
 const loader = document.querySelector('loader');
-// const baseUrl = "https://grandpy-bot-2001.herokuapp.com/"; // in dev use http://127.0.0.1:5000
-const baseUrl = "http://127.0.0.1:5000";
+const baseUrl = "https://grandpy-bot-2001.herokuapp.com/"; // in dev use http://127.0.0.1:5000
+// const baseUrl = "http://127.0.0.1:5000";
 
 const createChatBox = (elt, valueToSave1, parent1) => {
     const para = document.createElement(elt); // create the main element p
