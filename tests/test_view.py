@@ -1,7 +1,15 @@
 """this file test all function's view"""
-from grandpyapp import view, parser, place, wiki
 import pytest
 import json
+import flask
+from grandpyapp import view, parser, place, wiki
+
+
+app = flask.Flask(__name__)
+
+with app.test_request_context('send_answer?answer=openclassrooms'):
+    assert flask.request.path == '/send_answer'
+    assert flask.request.args['answers'] == 'openclassrooms'
 
 #region test for index_render_template
 def test_index_render_template_correctly(monkeypatch):
@@ -10,7 +18,6 @@ def test_index_render_template_correctly(monkeypatch):
                 <html>
                     <body>
                         <div>AIzaSyBkuQqSZkEBSmlSbeBOw_yr9G_GTayiwks</div>
-                        <div>openclassrooms</div>
                         <div>path/to/css</div>
                         <div>path/to/css</div>
                         <div>path/to/css</div>
@@ -44,8 +51,13 @@ def test_index_render_template_correctly(monkeypatch):
     monkeypatch.setattr(view, "render_template", mock_template_render)
     monkeypatch.setattr(view, 'url_for', mock_url_for)
 
-    render = view.index()
-    assert index_html == render
+    with app.test_request_context('/'):
+        
+
+    # render = view.index()
+    # print(index_html)
+    # print(render)
+    # assert index_html == render
 #endregion
 
 #region test for get_data
@@ -95,8 +107,8 @@ def mock_request_args_is_ok(monkeypatch):
     def mock_request_args():
         return MockRequest(dict(answer="ou se trouve la tour eifel ?"))
 
-    monkeypatch.setattr(view.get_data.request, 'request.args', mock_request_args)
- 
+    monkeypatch.setattr(view.get_data, 'request.args.get', mock_request_args)
+
 
 @pytest.fixture
 def mock_response_find_keyword_is_ok(monkeypatch):
@@ -131,8 +143,8 @@ def mock_response_find_data_about_place_is_ok(monkeypatch):
 
 def test_get_data_is_ok(mock_response_find_keyword_is_ok, 
                         mock_response_find_place_is_ok,
-                        mock_response_find_data_about_place_is_ok,
-                        mock_request_args_is_ok):
+                        mock_response_find_data_about_place_is_ok):
+                        # mock_request_args_is_ok):
     """test than response wiki return correctly the wiki data when she receive an answer"""
     # answer = "Ou se situe openclassrooms"
 

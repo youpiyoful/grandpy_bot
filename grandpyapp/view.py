@@ -9,8 +9,8 @@ app = Flask(__name__)
 CORS(app)
 # cors = CORS(app, resources={r"/grandpybot/*": {"origins": "*"}})
 # Config options - Make sure you created a 'config.py' file.
-# app.config.from_object('config.DevelopmentConfig')
-app.config.from_object('config.ProductionConfig')
+app.config.from_object('config.DevelopmentConfig')
+# app.config.from_object('config.ProductionConfig')
 GOOGLE_API_KEY = app.config.get('GOOGLE_API_KEY')
 BASE_URL_GOOGLE_PLACE = app.config.get('BASE_URL_GOOGLE_PLACE')
 # BASE_URL_WIKI = app.config.get('BASE_URL_WIKI')
@@ -22,11 +22,14 @@ def index():
     """This function returns the single page of the app"""
     # username = request.cookies.get('username')
     render = make_response(render_template('index.html',
-                             api_key=GOOGLE_API_KEY,
-                            #  key_word_place="openclassrooms",
-                             logo=url_for('static', filename='img/dither_it_logo.jpg'), # logo is dither and take 80% space in less (low tech mag)
-                             reset_css=url_for('static', filename='css/reset.css'),
-                             grandpy_app_css=url_for('static', filename='css/grandpy_app.css')), 200)
+                                           api_key=GOOGLE_API_KEY,
+                                           #  key_word_place="openclassrooms",
+                                           # logo is dither and take 80% space in less (low tech mag)
+                                           logo=url_for(
+                                               'static', filename='img/dither_it_logo.jpg'),
+                                           reset_css=url_for(
+                                               'static', filename='css/reset.css'),
+                                           grandpy_app_css=url_for('static', filename='css/grandpy_app.css')), 200)
     # render.set_cookie('same-site-cookie', 'foo', samesite='Lax')
     # render.set_cookie('username', 'the username', samesite='Strict', secure=True)
 
@@ -40,19 +43,21 @@ def get_data():
     print("APIKEY : ", GOOGLE_API_KEY)
     answer = request.args.get('answer')
     print("answer from get_data() : ", answer)
-    status_code = 200 # if no error is raised the status code remains equal to 200
-    stop_words = app.config.get('STOP_WORDS')  # use list of stop word stock in config.py
+    status_code = 200  # if no error is raised the status code remains equal to 200
+    # use list of stop word stock in config.py
+    stop_words = app.config.get('STOP_WORDS')
     print('ANSWER from view.get_data() : ', answer)
     parser_obj = Parser(answer, stop_words)  # instanciate Parser class
     keywords = parser_obj.find_keyword()  # call method of PARSER object
     print("KEYWORD : ", keywords)
-    
+
     if keywords[0] == "any keyword find":
         status_code = 404
         data = {"error": "aucun mot clef valide"}
-    
+
     else:
-        place_obj = QueryPlace(keywords, GOOGLE_API_KEY, BASE_URL_GOOGLE_PLACE)  # instanciate Place class
+        # instanciate Place class
+        place_obj = QueryPlace(keywords, GOOGLE_API_KEY, BASE_URL_GOOGLE_PLACE)
         data_google = place_obj.find_place()  # call method of PLACE object
         wiki_obj = Wiki('fr', keywords)  # instanciate wiki class
         data_wiki = wiki_obj.find_data_about_place()  # call method of WIKI object
@@ -62,7 +67,8 @@ def get_data():
             status_code = 404
 
         else:
-            data = {"data_google": data_google.json(), "data_wiki": data_wiki} # concatenate data_google and data_wiki in a big json object
+            # concatenate data_google and data_wiki in a big json object
+            data = {"data_google": data_google.json(), "data_wiki": data_wiki}
             print(data)
 
     response = app.response_class(
@@ -72,4 +78,3 @@ def get_data():
     )
     # response.set_cookie('username', 'the username', samesite='Strict', secure=True)
     return response
-

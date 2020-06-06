@@ -46,9 +46,10 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEBUG = True
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-
-class TestingConfig(Config):
     TESTING = True
+    
+# class TestingConfig(Config):
+#     TESTING = True
 
 # WIKI_API_KEY = 'here put the API key'
 

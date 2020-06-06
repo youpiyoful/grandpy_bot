@@ -1,8 +1,8 @@
 const historicContent = document.getElementById('historic-content');
 const textarea = document.getElementById('textarea');
 const loader = document.querySelector('loader');
-const baseUrl = "https://grandpy-bot-2001.herokuapp.com/"; // in dev use http://127.0.0.1:5000
-// const baseUrl = "http://127.0.0.1:5000";
+// const baseUrl = "https://grandpy-bot-2001.herokuapp.com/"; // in dev use http://127.0.0.1:5000
+const baseUrl = "http://127.0.0.1:5000";
 
 const createChatBox = (elt, valueToSave1, parent1) => {
     const para = document.createElement(elt); // create the main element p
@@ -30,7 +30,7 @@ const addClass = (eltToModify, classesToAdd = []) => {
 const createMap = (latitude, longitude) => {
     const place = { lat: latitude, lng: longitude };
     const map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 10, center: place }
+        document.getElementById('map'), {zoom: 12, center: place }
     );
     const marker = new google.maps.Marker({ position: place, map: map });
 }
@@ -70,7 +70,7 @@ const historicCreate = textarea.addEventListener("keyup", (e) => {
                             data_text_wiki = " Oups, j'ai rien a te dire à ce sujet... Même moi je ne sais pas tout !";
                         }
                     } else {
-                        data_text = "La sénilité me guette ! J'ai rien trouvé p'tit";
+                        data_text = "La sénilité me guette ! Ou alors c'est toi qui ne sait pas écrire... J'ai rien trouvé p'tit. ";
                         data_text_wiki = "";
                     }
 
