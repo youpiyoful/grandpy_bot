@@ -1,8 +1,6 @@
 """This file maped an object than used wiki api"""
 import wikipedia
 
-import json
-
 
 class Wiki:
     """this class use wiki api for find data about place"""
@@ -26,12 +24,8 @@ class Wiki:
                 str_keywords, sentences=1)}
             print(resp)
 
-        except wikipedia.exceptions.PageError as event:
-            resp = {'error': f'{event}'}
+        except wikipedia.exceptions.PageError as error:
+            resp = {'error': f'{error}'}
             print(resp)
 
         return resp
-
-
-# wiki = Wiki('fr', ['tour', 'eifel'])
-# wiki.find_data_about_place()
