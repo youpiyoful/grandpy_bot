@@ -1,5 +1,4 @@
-from grandpyapp import app
+from grandpyapp import APP
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    APP.run(debug=True)
