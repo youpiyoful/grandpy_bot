@@ -1,9 +1,8 @@
 """This file maped an object than used google place api"""
 import requests
-import json
 
 
-class QueryPlace:  # query place
+class QueryPlace:
     """this class used google api for find a place"""
 
     def __init__(self, keywords, api_key, base_url):
@@ -12,17 +11,23 @@ class QueryPlace:  # query place
         self.base_url = base_url
 
     def build_url_for_api_place(self):
-        """This method build a correct url for call google place api with Place attribute"""
+        """
+        This method build a correct url for call
+        google place api with Place attribute
+        """
         if isinstance(self.keywords, list):
-            str_keywords = ' '.join(self.keywords)
+            str_keywords = " ".join(self.keywords)
             print(str_keywords)
 
         else:
             str_keywords = self.keywords
 
-        url = f"{self.base_url}?input={str_keywords}\
-            &inputtype=textquery&fields=formatted_address,name,geometry&key={self.api_key}"
-        print(url)
+        url = (
+            f"{self.base_url}?input={str_keywords}"
+            "&inputtype=textquery&fields=formatted_address,name,"
+            f"geometry&key={self.api_key}"
+        )
+
         return url
 
     def find_place(self):

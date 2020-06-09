@@ -10,7 +10,10 @@ class Wiki:
         self.keywords = keywords
 
     def find_data_about_place(self):
-        """this method call wiki api for find data about place and return a dict response"""
+        """
+        this method call wiki api for find data
+        about place and return a dict response
+        """
         wikipedia.set_lang(self.language)
 
         if isinstance(self.keywords, list):
