@@ -33,4 +33,6 @@ class QueryPlace:
     def find_place(self):
         """this method call google place api for find place with a keyword"""
         r = requests.get(self.build_url_for_api_place())
+        if r.status_code != 200:
+            return False
         return r
