@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/venv,flask,python,pycharm
 # Edit at https://www.gitignore.io/?templates=venv,flask,python,pycharm
 
@@ -272,3 +271,4 @@ pip-selfcheck.json
 
 /grandpyapp/static/img
 /local_serv.sh
+/tests/test_view.py
