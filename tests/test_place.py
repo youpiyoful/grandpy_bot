@@ -69,8 +69,7 @@ def test_find_place(mock_response):
 def test_find_place_is_wrong(mock_response_wrong):
     """test behavior if place is not find"""
     resp = PLACE.find_place()
-    assert resp.status_code == 404
-    assert resp.json().get("mock_key") == "error data not found"
+    assert resp == False
 
 
 def test_build_url_for_api_place():
