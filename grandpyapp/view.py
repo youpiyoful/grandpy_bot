@@ -28,6 +28,7 @@ def index():
             logo=url_for("static", filename="img/dither_it_logo.jpg"),
             reset_css=url_for("static", filename="css/reset.css"),
             grandpy_app_css=url_for("static", filename="css/grandpy_app.css"),
+            small_screen=url_for('static', filename='css/smallscreen.css')
         ),
         200,
     )
